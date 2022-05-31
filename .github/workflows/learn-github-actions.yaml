@@ -14,11 +14,11 @@ jobs:
       - id: check_need_for_e2e
         name: Check labels and set TEST_E2E if needed
         run: |
-          if [[ -n "$GITHUB_PR_LABEL_E2E_IMAGES" }} ]]; then
+          if [[ -n "$GITHUB_PR_LABEL_E2E_IMAGES" ]]; then
             echo "Label e2e:images present"
           else
             echo "Label e2e:images is missing"
-          if [[ -n "$GITHUB_PR_LABEL_E2E_DATA" }} ]]; then
+          if [[ -n "$GITHUB_PR_LABEL_E2E_DATA" ]]; then
             echo "Label e2e:data present"
           else
             echo "Label e2e:data is missing"
