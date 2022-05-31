@@ -1,7 +1,14 @@
 name: learn-github-actions
-on: [push]
+on: 
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
 jobs:
-  check-bats-version:
+  run-tests:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, world!"
+      - name: Check labels and set TEST_E2E if needed
+        run: |
+          export TEST_E2E=1
+      - run: echo "Running tests, TEST_E2E=${TEST_E2E}"
