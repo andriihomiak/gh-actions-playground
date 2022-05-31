@@ -1,7 +1,28 @@
 name: learn-github-actions
-on: [push]
+on: 
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
 jobs:
-  check-bats-version:
+  run-tests:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, world!"
+      - name: PR labels
+        uses: joerick/pr-labels-action@v1.0.6
+        id: pr_labels
+      - id: check_need_for_e2e
+        name: Check labels and set TEST_E2E if needed
+        run: |
+          env
+          echo "PR labels: ${{ steps.pr_labels.outputs.labels }}"
+          if [[ -n "$GITHUB_PR_LABEL_E2E_IMAGES" ]]; then
+            echo "Label e2e:images present"
+          else
+            echo "Label e2e:images is missing"
+          fi
+          if [[ -n "$GITHUB_PR_LABEL_E2E_DATA" ]]; then
+            echo "Label e2e:data present"
+          else
+            echo "Label e2e:data is missing"
+          fi
