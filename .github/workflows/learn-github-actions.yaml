@@ -14,6 +14,7 @@ jobs:
       - id: check_need_for_e2e
         name: Check labels and set TEST_E2E if needed
         run: |
+          evn
           echo "PR labels: ${{ steps.pr_labels.outputs.labels }}"
           if [[ -n "$GITHUB_PR_LABEL_E2E_IMAGES" ]]; then
             echo "Label e2e:images present"
