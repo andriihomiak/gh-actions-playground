@@ -18,7 +18,9 @@ jobs:
             echo "Label e2e:images present"
           else
             echo "Label e2e:images is missing"
+          fi
           if [[ -n "$GITHUB_PR_LABEL_E2E_DATA" ]]; then
             echo "Label e2e:data present"
           else
             echo "Label e2e:data is missing"
+          fi
